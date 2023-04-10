@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
 import Footer from '../../components/Footer.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts'
 import { getCollection } from 'astro:content'
@@ -10,10 +9,6 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.pubDate.valueO
 ---
 
 <Layout title={SITE_TITLE}>
-  <header>
-    <Header title={SITE_TITLE} />
-  </header>
-
   <main>
     <section>
       <ul>
