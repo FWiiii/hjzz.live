@@ -35,7 +35,7 @@ export default defineConfig({
           'margin': '1.2em 0 0.5em',
         },
         'h5, h6': {
-          margin: '1em 0 0.5em',
+          'margin': '1em 0 0.5em',
         },
       },
     }),

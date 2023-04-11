@@ -3,9 +3,14 @@ const today = new Date()
 ---
 
 <footer class="footer">
-  <div class="flex justify-between items-center max-w-prose mx-auto text-center my-2">
+  <div class="flex justify-between items-center max-w-prose mx-auto text-center my-4">
     <div class="text-xs">
-      &copy; {today.getFullYear()} Smi1euD. All rights reserved.
+      &copy; {today.getFullYear()} Smi1euD. Powered by <a class="text-inherit decoration-none" href="https://astro.build">Astro</a>
+      +
+      <a class="text-inherit decoration-none" href="https://unocss.antfu.me">UnoCSS</a>
+      +
+      <a class="text-inherit decoration-none" href="https://www.netlify.com
+      ">Netlify</a>.
     </div>
     <svg
       version="1.1"
@@ -86,6 +91,7 @@ const today = new Date()
     </svg>
   </div>
 </footer>
+
 <style>
   .footer {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
