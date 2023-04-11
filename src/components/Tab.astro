@@ -1,20 +1,36 @@
+---
+import { getCollection } from 'astro:content'
+import FormattedDate from './FormattedDate.astro'
+const posts = (await getCollection('blog')).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+const recentPosts = posts.slice(-2).reverse()
+---
+
 <div class="my-8">
-  <div class="flex gap-4 items">
+  <div class="flex gap-4 border-b border-stone-700">
     <div class="my-2">Projects</div>
-    <a href="/blog" class="my-2 decoration-none">Posts</a>
   </div>
   <div class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-2">
-    <div class="bg-light-300 dark:bg-dark-600 h-36"></div>
-    <div class="bg-light-300 dark:bg-dark-600 h-36"></div>
-    <div class="bg-light-300 dark:bg-dark-600 h-36"></div>
-    <div class="bg-light-300 dark:bg-dark-600 h-36"></div>
-    <div class="bg-light-300 dark:bg-dark-600 h-36"></div>
-    <div class="bg-light-300 dark:bg-dark-600 h-36"></div>
+    {Array.from({ length: 6 }).map((_, i) => <div class="bg-light-300 dark:bg-dark-600 h-36 flex justify-center items-center">none yet</div>)}
   </div>
 </div>
 
-<style>
-  .items {
-    border-bottom: 1px solid rgba(248, 249, 250, 0.3);
-  }
-</style>
+<div class="mb-4">
+  <div class="flex gap-4 border-b border-stone-700">
+    <div class="my-2">Blogs</div>
+  </div>
+  <div>
+    <ul class="my-2 text-sm">
+      {
+        recentPosts.map((post) => (
+          <li class="flex justify-between mt-1">
+            <a href={`/blog/${post.slug}/`} class="decoration-underline">
+              {post.data.title}
+            </a>
+            <FormattedDate date={post.data.pubDate} />
+          </li>
+        ))
+      }
+      <li class="text-right mt-2"><a href="/blog" class="decoration-underline">more...</a></li>
+    </ul>
+  </div>
+</div>
